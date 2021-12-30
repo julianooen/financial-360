@@ -126,7 +126,7 @@ function arranjoRepeticao(n,p){
     return arrRep;
 }
 
-console.log(arranjoSimples(10,3))
+
 
 
 
@@ -137,7 +137,7 @@ function combSimples(n,p){
     return combSim;
 }
 
-console.log(combSimples(60,6))
+
 
 //com repetição e ordem nao importa 123==321
 function combRepeticao(n,p){
@@ -146,4 +146,35 @@ function combRepeticao(n,p){
     return combRep;
 }
 
-console.log(combRepeticao(60,6))
+
+/**
+ * calculo da moda == numeros que mais repetem em uma amostra(numeros separados por virgula)
+ * @param  {integer} args 
+ * @returns Array de numeros
+ */
+function calcModa(...args){
+    let count = { };
+    args.sort((a,b) => a - b)
+    let maior = 0
+    let modaFim = []
+    let modaF
+
+    for(let i = 0 ; i < args.length ; i++ ){
+        
+        !count.hasOwnProperty(args[i]) ? count[args[i]] = 1 : count[args[i]]++ ;
+        
+        if(count[args[i]] > maior){
+            maior = count[args[i]];
+            moda = args[i];
+
+        }else if (count[args[i]] == maior){
+            modaFim.push(args[i])
+            
+        }
+    }
+
+    return modaFim
+}
+
+
+
