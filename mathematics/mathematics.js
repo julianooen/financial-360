@@ -3,10 +3,10 @@
  *  arr = number (numeros separados por virgula)
  * return media de n termos
  */
-function media(...arr){
-    let media = arr.reduce((total, elemento) => total + elemento) / arr.length;
+function calcMedia(...arr){
+    let mediaResult = arr.reduce((total, elemento) => total + elemento) / arr.length;
 
-    return (media);
+    return (mediaResult);
 }
 
 
@@ -154,10 +154,10 @@ function combRepeticao(n,p){
  */
 function calcModa(...args){
     let count = { };
-    args.sort((a,b) => a - b)
-    let maior = 0
-    let modaFim = []
-    let modaF
+    let maior = 0;
+    let modaFim = [];
+
+    args.sort((a,b) => a - b);
 
     for(let i = 0 ; i < args.length ; i++ ){
         
@@ -168,13 +168,67 @@ function calcModa(...args){
             moda = args[i];
 
         }else if (count[args[i]] == maior){
-            modaFim.push(args[i])
+            modaFim.push(args[i]);
             
         }
     }
 
-    return modaFim
+    return modaFim;
 }
 
 
+
+/**
+ * mediana - numeros centrais de uma amostra de numeros separados por virgula
+ * @param  {integer} args 
+ * @returns integer
+ */
+
+function calcMediana(...args){
+    let medianaResult = 0;
+
+    args.sort((a,b) => a - b);
+
+    if(args.length % 2 != 0){
+        medianaResult = args[Math.floor(args.length/2)];
+    }else{
+        medianaResult = (args[(args.length / 2) - 1] + args[(args.length / 2)]) / 2
+    }
+    return medianaResult;
+}
+
+/**
+ * calcula a variancia em um conjunto de numeros
+ * @param  {integer} args 
+ * @returns double
+ */
+
+function calcVariancia(...args){
+    let mediaV = calcMedia(...args);
+    let acumulador = 0;
+    let varResult;
+
+    for(let i = 0 ; i < args.length ; i++){
+        acumulador+= Math.pow((args[i]-mediaV),2);
+    }
+    
+    varResult = acumulador / args.length;
+
+    return varResult;
+}
+
+/**
+ * calcula o desvio padrao em um conjunto de numeros
+ * @param  {integer} args 
+ * @returns double
+ */
+
+function calcDesvioPadrao(...args){
+    let desvioPadraoResult;
+
+    desvioPadraoResult = Math.pow(calcVariancia(...args),1/2);
+
+    return desvioPadraoResult;
+
+}
 
