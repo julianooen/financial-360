@@ -17,7 +17,7 @@ function media(...arr){
  */
 
 function factorial(term){
-    if(term == 1){
+    if(term <= 1){
 
         return 1;
 
@@ -97,6 +97,53 @@ function sumProgGeo(termo1, razao, nTermos){
 function probability(myChoice, totalChoices){
     let result = myChoice / totalChoices;
 
-    return result
+    return result;
 }
 
+/**
+ * calcula o numero de combinações possiveis de um numero de elementos(n) sendo que somente alguns podem ser escolhidos(p), e n nao se repete assim como a ordem importa(ex.: 123 != 321)
+ * @param {integer} n 
+ * @param {integer} p 
+ * @returns o numero de combinações 
+ */
+
+function arranjoSimples(n,p){
+    let arrSimp = factorial(n) / factorial(n-p);
+
+    return arrSimp;
+}
+
+/**
+ * calcula o numero de combinações possiveis de um numero de elementos(n) sendo que somente alguns podem ser escolhidos(p), e n PODE repitir assim como a ordem importa(ex.: 123 != 321)
+ * @param {integer} n 
+ * @param {integer} p 
+ * @returns 
+ */
+
+function arranjoRepeticao(n,p){
+    let arrRep = Math.pow(n,p);
+
+    return arrRep;
+}
+
+console.log(arranjoSimples(10,3))
+
+
+
+// sem repetição e oredm nao importa 123==321
+function combSimples(n,p){
+    let combSim = factorial(n) / (factorial(p) * factorial(n-p));
+
+    return combSim;
+}
+
+console.log(combSimples(60,6))
+
+//com repetição e ordem nao importa 123==321
+function combRepeticao(n,p){
+    let combRep = factorial(n+p-1) / (factorial(p) * factorial(n-1));
+
+    return combRep;
+}
+
+console.log(combRepeticao(60,6))
