@@ -63,11 +63,17 @@ function simpleInterestTempo(capital,montante,taxa){
 }
 
 
+/* cacula o capital necessario para chegar a um montante em juros simples
+tempo = float
+montante = float
+taxa = float
+retona o capital inicial*/
 
-function simpleInterestCapital(tempo,montante,taxa){
+function simpleInterestCapital(montante,tempo,taxa){
     let capital = 0;
 
-    capital = montante / ((tempo * taxa) + 1);
+    capital = (montante / ((tempo * (taxa / 100)) + 1)).toFixed(2);
 
-    return capital
+    return capital;
 }
+
