@@ -165,7 +165,7 @@ function calcModa(...args){
         
         if(count[args[i]] > maior){
             maior = count[args[i]];
-            moda = args[i];
+            modaFim = [args[i]];
 
         }else if (count[args[i]] == maior){
             modaFim.push(args[i]);
