@@ -232,3 +232,31 @@ function calcDesvioPadrao(...args){
 
 }
 
+/**
+ * calcula o erro padrao da media
+ * @param  {double} args 
+ * @returns erro padrao (double)
+ */
+function calcErroPadraoMedia(...args){
+    let erroPadraoMediaResult;
+
+    erroPadraoMediaResult = calcDesvioPadrao(...args) / Math.sqrt(args.length);
+
+    return erroPadraoMediaResult;
+}
+
+
+/**
+ * 
+ * @param  {...any} args 
+ * @returns 
+ */
+function calcCoeficienteVariacao(...args){
+    let coefVar;
+
+    coefVar = 100 * (calcDesvioPadrao(...args)/calcMedia(...args));
+
+    return coefVar;
+}
+
+
